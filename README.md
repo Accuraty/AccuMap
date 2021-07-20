@@ -8,7 +8,7 @@
 
 ### Installing the app
 
-You can install the app straight forward with the ["Installing Counter" checklist](https://azing.org/2sxc/r/wD0h-932)
+You can install the app straight forward with the same process as any standard 2sxc app. Download the Zip and import it. Check out the ["Installing Counter" checklist](https://azing.org/2sxc/r/wD0h-932) as a quick reminder.
 
 ### Customizing the app
 
