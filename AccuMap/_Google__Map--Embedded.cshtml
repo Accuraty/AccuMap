@@ -1,0 +1,17 @@
+@inherits ToSic.Sxc.Dnn.RazorComponent
+
+@{
+    String location = Content.Location.Replace(' ', '+');
+}
+
+<div @Edit.TagToolbar(Content)>
+    <iframe
+        id="GMapEmbd-@Content.EntityId"
+        width="100%"
+        height="450px"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps/embed/v1/place?key=@App.Settings.APIKey
+            &q=@location">
+    </iframe>
+</div>
