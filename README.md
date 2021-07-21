@@ -14,7 +14,7 @@ You can install the app straight forward with the same process as any standard 2
 
 #### Configuration (Settings, Resources)
 
-The AccuMap App doesn't use any app settings or app resources.
+The AccuMap App has a single setting in App Settings: the Google Embed Maps API key. The AccuMap App doesn't use any app resources.
 
 #### Style
 
