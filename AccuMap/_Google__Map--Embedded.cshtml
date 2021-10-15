@@ -2,16 +2,40 @@
 
 @{
     String location = Content.Location.Replace(' ', '+');
+    String zoom = "";
+    if(Content.EnableZoom){
+      zoom = "&zoom=" + (Content.DefaultZoom ?? "");
+      if(zoom == "&zoom="){
+        zoom = "";
+      }
+    }
 }
 
-<div @Edit.TagToolbar(Content)>
+<div class="AccuMap-container" @Edit.TagToolbar(Content)>
     <iframe
+        class="AccuMap-responsive-iframe"
         id="GMapEmbd-@Content.EntityId"
-        width="100%"
-        height="450px"
         loading="lazy"
         allowfullscreen
-        src="https://www.google.com/maps/embed/v1/place?key=@App.Settings.APIKey
-            &q=@location">
+        src="https://www.google.com/maps/embed/v1/place?key=@App.Settings.APIKey&q=@location@zoom" >
     </iframe>
 </div>
+<style>
+  .AccuMap-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 75%; /* 4:3 Aspect Ratio */
+  }
+
+  /* Then style the iframe to fit in the container div with full height and width */
+  .AccuMap-responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
