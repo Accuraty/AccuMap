@@ -4,7 +4,7 @@
   
 ## Embedded Maps for Dnn+2sxc
 
-2sxc Maps app for Google Embedded Maps that uses the forever-free embedded maps via the API.
+2sxc Maps app for Google Embedded Maps that uses the forever-free embedded maps via the API instead of the Google API and dynamic maps (which require a credit card to setup and can incur charges on large sites unless you are careful).
 
 ### Installing the app
 
@@ -14,7 +14,7 @@ You can install the app straight forward with the same process as any standard 2
 
 #### Configuration (Settings, Resources)
 
-The AccuMap App has a single setting in App Settings: the Google Embed Maps API key. The AccuMap App doesn't use any app resources.
+The AccuMap App has a single setting in App Settings: the Google Embed Maps API key. The AccuMap App doesn't use any app resources. While Google's Embed Maps api is free with unlimited usage, it still requires an api key according to https://developers.google.com/maps/documentation/embed/usage-and-billing. Visit https://console.cloud.google.com/ to find/create api keys.
 
 #### Style
 
