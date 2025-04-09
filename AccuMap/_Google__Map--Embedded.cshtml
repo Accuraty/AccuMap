@@ -1,7 +1,11 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
 
+@using ToSic.Razor.Blade
+
 @{
-    String location = Content.Location.Replace(' ', '+');
+    String location = Content.ProperCompanyName.Replace(' ', '+');
+    location += "," + Content.City.Replace(' ', '+');
+    location += "," + Content.State.Replace(' ', '+');
     String zoom = "";
     if(Content.EnableZoom){
       zoom = "&zoom=" + (Content.DefaultZoom ?? "");
@@ -9,33 +13,35 @@
         zoom = "";
       }
     }
+    string aspectRatio = Text.First(Content.AspectRatio?.ToString(), "75");
 }
 
-<div class="AccuMap-container" @Edit.TagToolbar(Content)>
+<div class="AccuMap-container-@CmsContext.Module.Id margin-map" @Edit.TagToolbar(Content)>
     <iframe
         class="AccuMap-responsive-iframe"
         id="GMapEmbd-@Content.EntityId"
+        title="Google area map"
         loading="lazy"
         allowfullscreen
         src="https://www.google.com/maps/embed/v1/place?key=@App.Settings.APIKey&q=@location@zoom" >
     </iframe>
 </div>
 <style>
-  .AccuMap-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 75%; /* 4:3 Aspect Ratio */
-  }
+.AccuMap-container-@CmsContext.Module.Id {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: @aspectRatio%; /* 75 is a 4:3 Aspect Ratio */
+}
 
-  /* Then style the iframe to fit in the container div with full height and width */
-  .AccuMap-responsive-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-  }
+/* Then style the iframe to fit in the container div with full height and width */
+.AccuMap-responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
